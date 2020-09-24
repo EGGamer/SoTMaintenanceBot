@@ -1,0 +1,17 @@
+{
+  "name": "SoTMaintenanceBot",
+  "version": "1.0.0",
+  "main": "src/index",
+  "author": "EGGamer",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-tesseract": "^0.0.3"
+  },
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "glob": "^7.1.6",
+    "path": "^0.12.7",
+    "util": "^0.12.3"
+  }
+}
