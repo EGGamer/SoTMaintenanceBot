@@ -16,7 +16,7 @@ module.exports = class extends Command {
 
 	// eslint-disable-next-line consistent-return
 	async run(message, args) {
-		if (this.client.owners.includes(message.author.id)) {
+		if (message.member.hasPermission('MANAGE_MESSAGES')) {
 			if (config.maintenanceStatus === 'announced') {
 				const intervalSecs = args[0];
 				if (!intervalSecs) return message.channel.send('Debes indicar un intervalo en segundos.');

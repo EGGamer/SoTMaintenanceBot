@@ -14,37 +14,37 @@ module.exports = class extends Command {
 
 	// eslint-disable-next-line consistent-return
 	async run(message, [command]) {
-		if (this.client.owners.includes(message.author.id)) {
+		if (message.member.hasPermission('MANAGE_MESSAGES')) {
 			const embed = new MessageEmbed()
 				.setColor('BLUE')
-				.setAuthor(`${message.guild.name} Help Menu`, message.guild.iconURL({ dynamic: true }))
+				.setAuthor(`${message.guild.name} Menú de ayuda`, message.guild.iconURL({ dynamic: true }))
 				.setThumbnail(this.client.user.displayAvatarURL())
-				.setFooter(`Requested by ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
+				.setFooter(`Pedido por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
 				.setTimestamp();
 
 			if (command) {
 				const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.aliases.get(command));
 
-				if (!cmd) return message.channel.send(`Invalid Command named. \`${command}\``);
+				if (!cmd) return message.channel.send(`Comándo inválido. \`${command}\``);
 
-				embed.setAuthor(`${this.client.utils.capitalise(cmd.name)} Command Help`, this.client.user.displayAvatarURL());
+				embed.setAuthor(`${this.client.utils.capitalise(cmd.name)} Ayuda del comando`, this.client.user.displayAvatarURL());
 				embed.setDescription([
 					`**❯ Aliases:** ${cmd.aliases.length ? cmd.aliases.map(alias => `\`${alias}\``).join(' ') : 'No Aliases'}`,
-					`**❯ Description:** ${cmd.description}`,
-					`**❯ Category:** ${cmd.category}`,
-					`**❯ Usage:** ${cmd.usage}`
+					`**❯ Descripción:** ${cmd.description}`,
+					`**❯ Categoría:** ${cmd.category}`,
+					`**❯ Uso:** ${cmd.usage}`
 				]);
 
 				return message.channel.send(embed);
 			} else {
 				embed.setDescription([
-					`These are the available commands for ${message.guild.name}`,
-					`The bot's prefix is: ${this.client.prefix}`,
-					`Command Parameters: \`<>\` is strict & \`[]\` is optional`
+					`Estos son los comandos disponibles para ${message.guild.name}`,
+					`El prefijo del bot es: ${this.client.prefix}`,
+					`Parámetros de los comandos: \`<>\` significa opcional, \`[]\` significa obligatorio y \`{}\` significa condicional.`
 				]);
 				let categories;
 				if (!this.client.owners.includes(message.author.id)) {
-					categories = this.client.utils.removeDuplicates(this.client.commands.filter(cmd => cmd.category !== 'Owner').map(cmd => cmd.category));
+					categories = this.client.utils.removeDuplicates(this.client.commands.filter(cmd => cmd.category !== 'Dueño').map(cmd => cmd.category));
 				} else {
 					categories = this.client.utils.removeDuplicates(this.client.commands.map(cmd => cmd.category));
 				}

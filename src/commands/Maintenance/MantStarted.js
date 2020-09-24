@@ -16,7 +16,7 @@ module.exports = class extends Command {
 
 	// eslint-disable-next-line consistent-return
 	async run(message, args) {
-		if (this.client.owners.includes(message.author.id)) {
+		if (message.member.hasPermission('MANAGE_MESSAGES')) {
 			if (config.maintenanceStatus === 'announced') {
 				const note = args.slice(0).join(' ');
 

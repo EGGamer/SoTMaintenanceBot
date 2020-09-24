@@ -16,7 +16,7 @@ module.exports = class extends Command {
 
 	// eslint-disable-next-line consistent-return
 	async run(message) {
-		if (this.client.owners.includes(message.author.id)) {
+		if (message.member.hasPermission('MANAGE_MESSAGES')) {
 			config.intervalWorking = 'no';
 			message.channel.send(`Se han parado todos los mensajes programados. Para iniciar otro, ejecuta el comando de iniciar de nuevo.`);
 		}

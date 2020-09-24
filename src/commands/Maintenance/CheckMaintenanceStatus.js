@@ -7,7 +7,8 @@ module.exports = class extends Command {
 
 	constructor(...args) {
 		super(...args, {
-			description: 'Test command.',
+			aliases: ['checkMantSt'],
+			description: 'Comprobar el estado actual del mantenimiento.',
 			category: 'Utilidades',
 			usage: '<args>'
 		});
@@ -15,7 +16,7 @@ module.exports = class extends Command {
 
 	// eslint-disable-next-line consistent-return
 	async run(message) {
-		if (this.client.owners.includes(message.author.id)) {
+		if (message.member.hasPermission('MANAGE_MESSAGES')) {
 			message.channel.send(`El estado actual del mantenimiento es: ${config.maintenanceStatus.toUpperCase()}.`);
 		}
 	}
