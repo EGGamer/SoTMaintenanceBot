@@ -4,8 +4,8 @@ module.exports = class Command {
 		this.client = client;
 		this.name = options.name || name;
 		this.aliases = options.aliases || [];
-		this.description = options.description || 'No description provided';
-		this.category = options.category || 'Miscellanious';
+		this.description = options.description || 'No se ha proporcionado una descripción.';
+		this.category = options.category || 'Miscelanio';
 		this.usage = `${this.client.prefix}${this.name} ${options.usage || ''}`.trim();
 	}
 
