@@ -54,6 +54,8 @@ module.exports = class extends Command {
 			} else if (note) {
 				message.channel.send(`Se ha enviado un anuncio de mantenimiento programado:\n**Fecha:** ${date}\n**Hora de inicio:** ${startHour} **Hora de finalización:** ${endHour}\n**Nota:** ${note}`);
 			}
+
+			this.client.user.setStatus('idle');
 		}
 	}
 

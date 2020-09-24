@@ -58,6 +58,8 @@ module.exports = class extends Command {
 				} else if (note) {
 					message.channel.send(`Se ha enviado un anuncio de mantenimiento finalizado:\n**Steam:** ${steamSize} **Win10:** ${w10Size} **Xb1:** ${xb1Size} **Xbx:** ${xbxSize}\n**Nota:** ${note}`);
 				}
+
+				this.client.user.setStatus('online');
 			} else if (hayUpdate === 'no') {
 				const note = args.slice(1).join(' ');
 
@@ -80,6 +82,8 @@ module.exports = class extends Command {
 				} else if (note) {
 					message.channel.send(`Se ha enviado un anuncio de mantenimiento finalizado:\n**Nota:** ${note}`);
 				}
+
+				this.client.user.setStatus('online');
 			}
 		}
 	}
