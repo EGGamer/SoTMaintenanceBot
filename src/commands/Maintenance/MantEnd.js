@@ -88,6 +88,7 @@ module.exports = class extends Command {
 					this.client.user.setStatus('online');
 					config.maintenanceStatus = 'none';
 				}
+			// eslint-disable-next-line max-len
 			} else { return message.channel.send(`No se ha podido anunciar el final del mantenimiento. El estado del mantenimiento es ${config.maintenanceStatus.toLocaleUpperCase()}. Requiere: **STARTED**`); }
 		}
 	}
