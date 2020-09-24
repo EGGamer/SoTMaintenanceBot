@@ -1,6 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 const { MessageEmbed } = require('discord.js');
 const Command = require('../../structures/Command.js');
+const config = require('../../../config.json');
 
 module.exports = class extends Command {
 
@@ -13,9 +14,9 @@ module.exports = class extends Command {
 	}
 
 	// eslint-disable-next-line consistent-return
-	async run(message, args) {
+	async run(message) {
 		if (this.client.owners.includes(message.author.id)) {
-			message.channel.send(`Argument 1: ${args[0]}, Argument 2: ${args[1]}, Argument 3: ${args[2]}`);
+			message.channel.send(`El estado actual del mantenimiento es: ${config.maintenanceStatus.toUpperCase()}.`);
 		}
 	}
 
