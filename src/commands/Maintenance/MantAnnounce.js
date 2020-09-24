@@ -35,7 +35,7 @@ module.exports = class extends Command {
 				.setThumbnail('https://imgur.com/DYjA5ss.png')
 				.setDescription(`**¡Planead bien vuestras aventuras para este día!**`)
 				.setFooter(`Aviso: La hora de finalización es una estimación, no es una hora definitiva.`, message.guild.iconURL({ dynamic: true }))
-				.setImage('https://cdn.discordapp.com/attachments/580447725162856468/753525546746380318/MantProgramado.jpg')
+				.setImage('https://imgur.com/yOdjwus.jpg')
 				.addField(`Fecha:`, ` ${date}`, false)
 				.addField(`Hora de inicio:`, `${startHour} ${timeZone}`, true)
 				.addField(`Hora de finalización:`, `Al rededor de las ${endHour} ${timeZone}`, true);

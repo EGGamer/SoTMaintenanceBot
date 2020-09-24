@@ -68,7 +68,7 @@ module.exports = class extends Command {
 					.setTitle('MANTENIMIENTO FINALIZADO')
 					.setThumbnail('https://imgur.com/5G0Cs9A.png')
 					.setDescription(`¡El mantenimiento ya ha finalizado y ya se puede jugar al juego!`)
-					.setImage('https://cdn.discordapp.com/attachments/580447725162856468/753569265830854736/MantFinalizado.jpg');
+					.setImage('https://imgur.com/jfRMUqA.jpg');
 
 				if (args[1] !== undefined) {
 					embed.addField(`Nota:`, `${note}`, false);
