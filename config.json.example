@@ -1,4 +1,5 @@
 {
+    "botVersion": "BETA v1.0.0",
     "prefix": "PREFIX HERE",
     "token": "TOKEN HERE",
     "owners": ["OWNER ID 1", "OWNER ID 2"],

@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const Command = require('../../structures/Command.js');
+const config = require('../../../config.json');
 
 module.exports = class extends Command {
 
@@ -19,7 +20,7 @@ module.exports = class extends Command {
 				.setColor('BLUE')
 				.setAuthor(`${message.guild.name} Menú de ayuda`, message.guild.iconURL({ dynamic: true }))
 				.setThumbnail(this.client.user.displayAvatarURL())
-				.setFooter(`Pedido por ${message.author.username}`, message.author.displayAvatarURL({ dynamic: true }))
+				.setFooter(`Pedido por ${message.author.username}. ${config.botVersion}`, message.author.displayAvatarURL({ dynamic: true }))
 				.setTimestamp();
 
 			if (command) {
