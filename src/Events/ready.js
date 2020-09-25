@@ -1,4 +1,5 @@
 const Event = require('../structures/Event.js');
+const config = require('../../config.json');
 
 module.exports = class extends Event {
 
@@ -15,7 +16,15 @@ module.exports = class extends Event {
 			`Loaded ${this.client.events.size} events.`
 		].join('\n'));
 
-		this.client.user.setActivity('mantenimientos.', { type: 'WATCHING' });
+		// this.client.user.setActivity('mantenimientos.', { type: 'WATCHING' });
+
+		const activities = [
+			`mantenimientos.`,
+			`${config.botVersion}`
+		];
+
+		let i = 0;
+		setInterval(() => this.client.user.setActivity(`${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 10000);
 	}
 
 };
