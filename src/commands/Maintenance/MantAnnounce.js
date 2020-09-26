@@ -49,7 +49,7 @@ module.exports = class extends Command {
 
 				const announcementChannel = message.guild.channels.cache.get(config.maintenanceAnnouncementChannel);
 				announcementChannel.send(embed);
-				announcementChannel.send('@everyone');
+				announcementChannel.send(`<@${config.maintenanceAnnouncementRole}>`);
 				if (!note) {
 					message.channel.send(`Se ha enviado un anuncio de mantenimiento programado:\n**Fecha:** ${date}\n**Hora de inicio:** ${startHour} **Hora de finalización:** ${endHour}`);
 				} else if (note) {

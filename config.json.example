@@ -4,6 +4,7 @@
     "token": "TOKEN HERE",
     "owners": ["OWNER ID 1", "OWNER ID 2"],
     "maintenanceAnnouncementChannel": "CHANNEL ID HERE",
+    "maintenanceAnnouncementRole": "ROLE ID HERE",
     "maintenanceScheduledMsgChannel": "CHANNEL ID HERE",
     "intervalWorking": "no", //DO NOT CHANGE
     "maintenanceStatus": "none" //DO NOT CHANGE
