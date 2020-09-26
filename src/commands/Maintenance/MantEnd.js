@@ -53,7 +53,7 @@ module.exports = class extends Command {
 
 					const announcementChannel = message.guild.channels.cache.get(config.maintenanceAnnouncementChannel);
 					announcementChannel.send(embed);
-					announcementChannel.send('@everyone');
+					announcementChannel.send(`<@&${config.maintenanceAnnouncementRole}>`);
 					if (!note) {
 						message.channel.send(`Se ha enviado un anuncio de mantenimiento finalizado:\n**Steam:** ${steamSize} **Win10:** ${w10Size} **Xb1:** ${xb1Size} **Xbx:** ${xbxSize}`);
 					} else if (note) {
