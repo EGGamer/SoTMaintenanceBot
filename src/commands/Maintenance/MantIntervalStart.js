@@ -47,23 +47,61 @@ module.exports = class extends Command {
 					if (config.intervalWorking === 'no') {
 						clearInterval(interval);
 					} else if (config.intervalWorking === 'yes') {
-						const embed = new MessageEmbed()
-							.setColor('ORANGE')
-							.setTitle('AVISO DE MANTENIMIENTO')
-							.setThumbnail('https://imgur.com/DYjA5ss.png')
-							.setDescription(`**¡Planead bien vuestras aventuras para este día!**`)
-							.setFooter(`Aviso: La hora de finalización es una estimación, no es una hora definitiva.`, message.guild.iconURL({ dynamic: true }))
-							.setImage('https://imgur.com/yOdjwus.jpg')
-							.addField(`Fecha:`, ` ${date}`, false)
-							.addField(`Hora de inicio:`, `${startHour} ${timeZone}`, true)
-							.addField(`Hora de finalización:`, `Al rededor de las ${endHour} ${timeZone}`, true);
+						// SI EL ESTADO DEL MANTENIMIENTO ES: "ANNOUNCED"
+						if (config.maintenanceStatus === 'announced') {
+							const embed = new MessageEmbed()
+								.setColor('ORANGE')
+								.setTitle('AVISO DE MANTENIMIENTO')
+								.setThumbnail('https://imgur.com/DYjA5ss.png')
+								.setDescription(`**¡Planead bien vuestras aventuras para este día!**`)
+								.setFooter(`Aviso: La hora de finalización es una estimación, no es una hora definitiva.`, message.guild.iconURL({ dynamic: true }))
+								.setImage('https://imgur.com/yOdjwus.jpg')
+								.addField(`Fecha:`, ` ${date}`, false)
+								.addField(`Hora de inicio:`, `${startHour} ${timeZone}`, true)
+								.addField(`Hora de finalización:`, `Al rededor de las ${endHour} ${timeZone}`, true);
 
-						if (args[5] !== undefined) {
-							embed.addField(`Nota:`, `${note}`, false);
+							if (args[5] !== undefined) {
+								embed.addField(`Nota:`, `${note}`, false);
+							}
+							embed.addField(`\u200B`, `__**Tened un ojo al canal <#${config.maintenanceAnnouncementChannel}> para recibir más noticias sobre el mantenimiento.**__`);
+
+							intervalAnnounceChannel.send(embed);
 						}
-						embed.addField(`\u200B`, `__**Tened un ojo al canal <#${config.maintenanceAnnouncementChannel}> para recibir más noticias sobre el mantenimiento.**__`);
+						if (config.maintenanceStatus === 'started') {
+							const embed = new MessageEmbed()
+								.setColor('RED')
+								.setTitle('AVISO DE MANTENIMIENTO')
+								.setThumbnail('https://imgur.com/thnBAkZ.png')
+								.setDescription(`**¡No se puede jugar al juego!**`)
+								.setFooter(`Aviso: La hora de finalización es una estimación, no es una hora definitiva.`, message.guild.iconURL({ dynamic: true }))
+								.setImage('https://imgur.com/UWxcGaX.jpg')
+								.addField(`Fecha:`, ` ${date}`, false)
+								.addField(`Hora de inicio:`, `${startHour} ${timeZone}`, true)
+								.addField(`Hora de finalización:`, `Al rededor de las ${endHour} ${timeZone}`, true);
 
-						intervalAnnounceChannel.send(embed);
+							if (args[5] !== undefined) {
+								embed.addField(`Nota:`, `${note}`, false);
+							}
+							embed.addField(`\u200B`, `__**Tened un ojo al canal <#${config.maintenanceAnnouncementChannel}> para recibir más noticias sobre el mantenimiento.**__`);
+
+							intervalAnnounceChannel.send(embed);
+						}
+						if (config.maintenanceStatus === 'none') {
+							const embed = new MessageEmbed()
+								.setColor('GREEN')
+								.setTitle('AVISO DE MANTENIMIENTO')
+								.setThumbnail('https://imgur.com/5G0Cs9A.png')
+								.setDescription(`**¡Ya ha terminado el mantenimiento!**`)
+								.setFooter(`Aviso: Es posible que los servidores no funcionen al 100%.`, message.guild.iconURL({ dynamic: true }))
+								.setImage('https://imgur.com/jfRMUqA.jpg');
+
+							if (args[5] !== undefined) {
+								embed.addField(`Nota:`, `${note}`, false);
+							}
+							embed.addField(`\u200B`, `__**Tened un ojo al canal <#${config.maintenanceAnnouncementChannel}> para saber más sobre el mantenimiento.**__`);
+
+							intervalAnnounceChannel.send(embed);
+						}
 					}
 				}, intervalMili);
 
