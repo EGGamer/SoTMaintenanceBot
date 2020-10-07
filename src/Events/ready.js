@@ -16,7 +16,7 @@ module.exports = class extends Event {
 			`Loaded ${this.client.events.size} events.`
 		].join('\n'));
 
-		// this.client.user.setActivity('mantenimientos.', { type: 'WATCHING' });
+		this.client.user.setActivity('mantenimientos.', { type: 'WATCHING' });
 
 		const activities = [
 			`mantenimientos.`,
@@ -24,7 +24,7 @@ module.exports = class extends Event {
 		];
 
 		let i = 0;
-		setInterval(() => this.client.user.setActivity(`${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 10000);
+		setInterval(() => this.client.user.setActivity(`${activities[i++ % activities.length]}`, { type: 'WATCHING' }), 60000);
 	}
 
 };
