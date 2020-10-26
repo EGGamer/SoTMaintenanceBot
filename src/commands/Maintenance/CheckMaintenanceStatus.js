@@ -9,8 +9,7 @@ module.exports = class extends Command {
 		super(...args, {
 			aliases: ['checkMantSt'],
 			description: 'Comprobar el estado actual del mantenimiento.',
-			category: 'Utilidades',
-			usage: '<args>'
+			category: 'Utilidades'
 		});
 	}
 

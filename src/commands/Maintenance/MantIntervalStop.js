@@ -8,9 +8,8 @@ module.exports = class extends Command {
 	constructor(...args) {
 		super(...args, {
 			aliases: ['mistop'],
-			description: 'Comando para avisar periódicamente de un mantenimiento.',
-			category: 'Mantenimientos',
-			usage: '[intervalo en segundos] [fecha] [zonaHoraria] [horaInicio] [horaFinal] <nota>'
+			description: 'Comando para acabar un aviso periodico de mantenimientos.',
+			category: 'Mantenimientos'
 		});
 	}
 
